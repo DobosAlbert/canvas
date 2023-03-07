@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   faBank,
   faBuilding,
@@ -7,25 +7,79 @@ import {
   faRightLeft
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
+import { useGetAccountInfo, useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
 import { logout } from '@multiversx/sdk-dapp/utils';
 import { Navbar as BsNavbar, NavItem, Nav, NavbarBrand } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { routeNames } from 'routes';
 import { ReactComponent as Logo } from '../../../assets/img/logo.svg';
+import { ReactComponent as EccuLogo } from '../../../assets/img/eccu.svg';
+import { ReactComponent as EstarLogo } from '../../../assets/img/estar.svg';
+import axios from 'axios';
+import { API_URL } from '../../../config';
+
+const subNavItems = [
+  {
+    name: "Swap",
+    icon: <FontAwesomeIcon icon={faRightLeft} />
+  },
+  {
+    name: "My Castle",
+    icon: <FontAwesomeIcon icon={faBuilding} />
+  },
+  {
+    name: "Shop",
+    icon: <FontAwesomeIcon icon={faCartShopping} />
+  },
+  {
+    name: "Bank",
+    icon: <FontAwesomeIcon icon={faBank} />
+  },
+  {
+    name: "Secondary Market",
+    icon: <FontAwesomeIcon icon={faPager} />
+  },
+]
 
 export const Navbar = () => {
+  const [activeItem, setActiveItem] = useState<string>(subNavItems[0].name);
+  const [eccuBalance, setEccuBalance] = useState<number>(0);
+  const [estarBalance, setEstarBalance] = useState<number>(0);
   const isLoggedIn = useGetIsLoggedIn();
+  const { address } = useGetAccountInfo();
 
   const handleLogout = () => {
     logout(`${window.location.origin}/unlock`);
   };
 
+  const fetchTokenBalance = async (token: string) => {
+    try {
+      const { data } = await axios.get(API_URL + '/accounts/' + address + '/tokens/' + token)
+      if(token === "ESTAR-461bab") {
+        setEstarBalance(Number(data.balance.slice(0, -18)))
+      } else {
+        setEccuBalance(Number(data.balance.slice(-18)))
+      }
+    } catch(error) {
+      return 0;
+    }
+  }
+
+  useEffect(() => {
+    fetchTokenBalance('ESTAR-461bab')
+    fetchTokenBalance('ECCU-29891f')
+  }, [])
+
+  useEffect(() => {
+    fetchTokenBalance('ESTAR-461bab')
+    fetchTokenBalance('ECCU-29891f')
+  }, [address])
+
   return (
     <>
       <BsNavbar>
-        <div className='container-fluid px-0 px-md-5 d-flex align-items-start'>
-          <Nav className='py-3'>
+        <div className='container-fluid px-0 px-md-5 d-flex align-items-sm-start'>
+          <Nav className='py-3 d-none d-sm-block'>
             {isLoggedIn && (
               <>
                 <NavItem>
@@ -35,10 +89,20 @@ export const Navbar = () => {
             )}
           </Nav>
           <NavbarBrand><Logo className='logo'/></NavbarBrand>
-          <Nav className='py-3'>
+          <Nav className='py-3 align-items-center'>
             {isLoggedIn && (
               <>
                 <NavItem>
+                  <p className='navItem-link d-flex align-items-center token-amount'>
+                  <EccuLogo width={24} height={24} className={'mr-2'} /> {eccuBalance}
+                  </p>
+                </NavItem>
+                <NavItem className='ml-2'>
+                  <p className='navItem-link d-flex align-items-center token-amount'>
+                  <img src='https://media.elrond.com/tokens/asset/ESTAR-461bab/logo.svg' width={24} height={24} className={'mr-2'} /> {estarBalance}
+                  </p>
+                </NavItem>
+                <NavItem className='ml-2'>
                   <p className='navItem-link' onClick={handleLogout}>
                     Logout
                   </p>
@@ -55,13 +119,21 @@ export const Navbar = () => {
           </Nav>
         </div>
       </BsNavbar>
-      <Nav className='d-block mx-auto d-sm-flex mx-sm-0 justify-content-center pt-2'>
-        <NavItem className='subNavItem-link'><FontAwesomeIcon icon={faRightLeft} /> Swap</NavItem>
-        <NavItem className='subNavItem-link'><FontAwesomeIcon icon={faBuilding} /> My Castle</NavItem>
-        <NavItem className='subNavItem-link'><FontAwesomeIcon icon={faCartShopping} /> Shop</NavItem>
-        <NavItem className='subNavItem-link'><FontAwesomeIcon icon={faBank} /> Banks</NavItem>
-        <NavItem className='subNavItem-link'><FontAwesomeIcon icon={faPager} /> Secondary Market</NavItem>
-      </Nav>
+      {
+        isLoggedIn && (
+          <Nav className='d-block mx-auto d-sm-flex mx-sm-0 justify-content-center align-items-center pt-2'>
+            {subNavItems.map((subNavItem) => (
+              <NavItem
+                key={subNavItem.name}
+                className={`subNavItem-link ${activeItem === subNavItem.name ? 'active-subNavItem' : undefined}`}
+                onClick={() => setActiveItem(subNavItem.name)}
+              >
+                {subNavItem.icon} {subNavItem.name}
+              </NavItem>
+            ))}
+          </Nav>
+        )
+      }
     </>
   );
 };
