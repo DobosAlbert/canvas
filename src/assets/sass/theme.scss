@@ -24,6 +24,7 @@ Override Bootstrap variables only above.
 .custom-classname.btn-primary {
   background-color: green;
 }
+
 /* Base
 -------------------------------------------------- */
 html {
@@ -58,16 +59,18 @@ html {
 
 /* Navbar
 -------------------------------------------------- */
-.multiversx-logo {
-  width: 85px;
-  height: 25px;
+.logo {
+  width: 100px;
+  height: 100px;
 }
 
-.dapp-name {
-  line-height: 1;
-  border-left: 1px solid $gray-400;
-  padding-left: 3px;
-  margin-left: 4px;
+.navItem-link {
+  text-decoration: unset !important;
+  color: unset;
+}
+
+.subNavItem-link {
+  padding-right: 20px;
 }
 
 /* Dashboard
