@@ -1,12 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import {
-  faBank,
-  faBuilding,
-  faCartShopping,
-  faPager,
-  faRightLeft
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState } from 'react';
 import { useGetAccountInfo, useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
 import { logout } from '@multiversx/sdk-dapp/utils';
 import { Navbar as BsNavbar, NavItem, Nav, NavbarBrand } from 'react-bootstrap';
@@ -14,35 +6,11 @@ import { Link } from 'react-router-dom';
 import { routeNames } from 'routes';
 import { ReactComponent as Logo } from '../../../assets/img/logo.svg';
 import { ReactComponent as EccuLogo } from '../../../assets/img/eccu.svg';
-import { ReactComponent as EstarLogo } from '../../../assets/img/estar.svg';
 import axios from 'axios';
 import { API_URL } from '../../../config';
-
-const subNavItems = [
-  {
-    name: "Swap",
-    icon: <FontAwesomeIcon icon={faRightLeft} />
-  },
-  {
-    name: "My Castle",
-    icon: <FontAwesomeIcon icon={faBuilding} />
-  },
-  {
-    name: "Shop",
-    icon: <FontAwesomeIcon icon={faCartShopping} />
-  },
-  {
-    name: "Bank",
-    icon: <FontAwesomeIcon icon={faBank} />
-  },
-  {
-    name: "Secondary Market",
-    icon: <FontAwesomeIcon icon={faPager} />
-  },
-]
+import { SubMenu } from './SubMenu';
 
 export const Navbar = () => {
-  const [activeItem, setActiveItem] = useState<string>(subNavItems[0].name);
   const [eccuBalance, setEccuBalance] = useState<number>(0);
   const [estarBalance, setEstarBalance] = useState<number>(0);
   const isLoggedIn = useGetIsLoggedIn();
@@ -119,21 +87,7 @@ export const Navbar = () => {
           </Nav>
         </div>
       </BsNavbar>
-      {
-        isLoggedIn && (
-          <Nav className='d-block mx-auto d-sm-flex mx-sm-0 justify-content-center align-items-center pt-2'>
-            {subNavItems.map((subNavItem) => (
-              <NavItem
-                key={subNavItem.name}
-                className={`subNavItem-link ${activeItem === subNavItem.name ? 'active-subNavItem' : undefined}`}
-                onClick={() => setActiveItem(subNavItem.name)}
-              >
-                {subNavItem.icon} {subNavItem.name}
-              </NavItem>
-            ))}
-          </Nav>
-        )
-      }
+      <SubMenu />
     </>
   );
 };
