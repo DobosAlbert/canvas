@@ -53,6 +53,8 @@ export const SubMenu = () => {
   useEffect(() => {
     if(pathname.length > 10) {
       setActiveItem(pathname.slice(11))
+    } else {
+      setActiveItem(subNavItems[0].label)
     }
   }, [pathname])
 
