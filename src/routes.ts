@@ -2,11 +2,14 @@ import { RouteType } from '@multiversx/sdk-dapp/types';
 import { dAppName } from 'config';
 import { withPageTitle } from './components/PageTitle';
 
-import { Dashboard, Home } from './pages';
+import { Bank, Dashboard, Home, MyCastle, Shop } from './pages';
 
 export const routeNames = {
   home: '/',
   dashboard: '/dashboard',
+  myCastle: '/dashboard/castle',
+  shop: '/dashboard/shop',
+  bank: '/dashboard/bank',
   unlock: '/unlock'
 };
 
@@ -24,6 +27,24 @@ export const routes: RouteWithTitleType[] = [
     path: routeNames.dashboard,
     title: 'Dashboard',
     component: Dashboard,
+    authenticatedRoute: true
+  },
+  {
+    path: routeNames.myCastle,
+    title: 'My Castle',
+    component: MyCastle,
+    authenticatedRoute: true
+  },
+  {
+    path: routeNames.shop,
+    title: 'Shop',
+    component: Shop,
+    authenticatedRoute: true
+  },
+  {
+    path: routeNames.bank,
+    title: 'Bank',
+    component: Bank,
     authenticatedRoute: true
   }
 ];
