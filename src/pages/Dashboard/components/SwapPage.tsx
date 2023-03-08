@@ -50,7 +50,7 @@ export const SwapPage = () => {
       <Col className='mb-3'>
         <h1 className='text-center'>Swap</h1>
         <h6 className='text-center'>Select a SFT and press the buton!</h6>
-        <Button variant='primary' className='d-block mx-auto' disabled={!sftSelected ? true : false} onClick={swap}>Swap</Button>
+        <Button className='d-block mx-auto custom-btn' disabled={!sftSelected ? true : false} onClick={swap}>Swap</Button>
       </Col>
     </Row>
     <Row>
