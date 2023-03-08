@@ -1,4 +1,4 @@
-import { useGetAccountInfo } from '@multiversx/sdk-dapp/hooks';
+import { useGetAccountInfo, useGetActiveTransactionsStatus } from '@multiversx/sdk-dapp/hooks';
 import { NftType } from '@multiversx/sdk-dapp/types/tokens.types';
 import { useEffect, useState } from 'react'
 import axios from 'axios';
@@ -9,16 +9,20 @@ const sftCollections = ['COMMON-9b6839', 'RARE-76f5b9', 'EPIC-2449b4', 'KEY-4de1
 
 export const SFTsToSwap = ({sftSelected, setSftSelected}: {sftSelected: NftType | undefined, setSftSelected: (arg: any) => void}) => {
     const { address } = useGetAccountInfo();
-    const [loading, setLoading] = useState<boolean>(true);
+    const { success } = useGetActiveTransactionsStatus();
+    const [loading, setLoading] = useState<boolean>(false);
     const [sfts, setSfts] = useState<NftType[]>([]);
 
     const fetchSfts = async () => {
+        setLoading(true);
         try {
             setSfts([])
+            const sfts = [];
             for(const sftCollection of sftCollections) {
                 const { data } = await axios.get(API_URL + '/accounts/' + address + '/nfts?collection=' + sftCollection)
-                setSfts((prev) => [...prev, ...data]);
+                sfts.push(...data);
             }
+            setSfts(sfts);
         } catch (error) {
             return;
         }
@@ -28,6 +32,10 @@ export const SFTsToSwap = ({sftSelected, setSftSelected}: {sftSelected: NftType 
     useEffect(() => {
         fetchSfts()
     }, []);
+
+    useEffect(() => {
+        fetchSfts()
+    }, [success]);
 
     if(loading) {
         return <Col className='mt-5'>
