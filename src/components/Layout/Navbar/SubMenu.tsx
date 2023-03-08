@@ -61,7 +61,7 @@ export const SubMenu = () => {
   if (!isLoggedIn) return null;
 
   return (
-    <Nav className='d-block mx-auto d-sm-flex mx-sm-0 justify-content-center align-items-center pt-2'>
+    <Nav className='d-block mx-auto d-sm-flex mx-sm-0 justify-content-center align-items-center mt-4'>
         {subNavItems.map((subNavItem) => (
           <NavItem
             key={subNavItem.name}

@@ -46,7 +46,7 @@ export const Navbar = () => {
   return (
     <>
       <BsNavbar>
-        <div className='container-fluid px-0 px-md-5 d-flex align-items-sm-start justify-content-around'>
+        <div className='container-fluid px-0 px-md-5 d-flex justify-content-around'>
           <Nav className='py-3 d-none d-sm-block' style={{ width: "30vw" }}>
             {isLoggedIn && (
               <>
