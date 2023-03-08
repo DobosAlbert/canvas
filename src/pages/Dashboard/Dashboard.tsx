@@ -1,3 +1,8 @@
-export const Dashboard = () => (
-  <h1>Dashboard</h1>
-);
+import { PageLayout } from "components/PageLayout";
+import { SwapPage } from "./components/SwapPage";
+
+export const Dashboard = () => {
+  return <PageLayout>
+    <SwapPage />
+  </PageLayout>;
+}

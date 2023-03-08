@@ -46,8 +46,8 @@ export const Navbar = () => {
   return (
     <>
       <BsNavbar>
-        <div className='container-fluid px-0 px-md-5 d-flex align-items-sm-start'>
-          <Nav className='py-3 d-none d-sm-block'>
+        <div className='container-fluid px-0 px-md-5 d-flex align-items-sm-start justify-content-around'>
+          <Nav className='py-3 d-none d-sm-block' style={{ width: "30vw" }}>
             {isLoggedIn && (
               <>
                 <NavItem>
@@ -56,16 +56,16 @@ export const Navbar = () => {
               </>
             )}
           </Nav>
-          <NavbarBrand><Logo className='logo'/></NavbarBrand>
-          <Nav className='py-3 align-items-center'>
+          <NavbarBrand><Logo className='logo d-block mx-auto'/></NavbarBrand>
+          <Nav className='py-3 align-items-center justify-content-end' style={{ width: "30vw" }}>
             {isLoggedIn && (
               <>
-                <NavItem>
+                <NavItem className='py-3 d-none d-sm-block'>
                   <p className='navItem-link d-flex align-items-center token-amount'>
                   <EccuLogo width={24} height={24} className={'mr-2'} /> {eccuBalance}
                   </p>
                 </NavItem>
-                <NavItem className='ml-2'>
+                <NavItem className='ml-2 py-3 d-none d-sm-block'>
                   <p className='navItem-link d-flex align-items-center token-amount'>
                   <img src='https://media.elrond.com/tokens/asset/ESTAR-461bab/logo.svg' width={24} height={24} className={'mr-2'} /> {estarBalance}
                   </p>
