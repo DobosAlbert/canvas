@@ -65,12 +65,12 @@ export const SubMenu = () => {
         {subNavItems.map((subNavItem) => (
           <NavItem
             key={subNavItem.name}
-            onClick={() => setActiveItem(subNavItem.label)}
           >
             {
               subNavItem.label !== 'secondary-market' ? <Link
               className={`subNavItem-link ${activeItem === subNavItem.label ? 'active-subNavItem' : undefined}`}
               to={subNavItem.link}
+              onClick={() => setActiveItem(subNavItem.label)}
             >
               {subNavItem.icon} {subNavItem.name}
             </Link> : <a href={subNavItem.link} target="_blank" className='subNavItem-link'>{subNavItem.icon} {subNavItem.name}</a>
