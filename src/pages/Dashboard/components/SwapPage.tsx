@@ -44,6 +44,7 @@ export const SwapPage = () => {
             },
             redirectAfterSign: false
           });
+      setSftSelected(undefined)
     }
   return <>
     <Row>
