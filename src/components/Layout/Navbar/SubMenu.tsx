@@ -61,10 +61,11 @@ export const SubMenu = () => {
   if (!isLoggedIn) return null;
 
   return (
-    <Nav className='d-block mx-auto d-sm-flex mx-sm-0 justify-content-center align-items-center pt-2'>
+    <Nav className='d-block mx-auto d-sm-flex mx-sm-0 justify-content-center align-items-center mt-4'>
         {subNavItems.map((subNavItem) => (
           <NavItem
             key={subNavItem.name}
+            className={'mb-3 mb-sm-0'}
           >
             {
               subNavItem.label !== 'secondary-market' ? <Link
@@ -72,8 +73,8 @@ export const SubMenu = () => {
               to={subNavItem.link}
               onClick={() => setActiveItem(subNavItem.label)}
             >
-              {subNavItem.icon} {subNavItem.name}
-            </Link> : <a href={subNavItem.link} target="_blank" className='subNavItem-link'>{subNavItem.icon} {subNavItem.name}</a>
+              {subNavItem.icon}<span className='ml-3'>{subNavItem.name}</span>
+            </Link> : <a href={subNavItem.link} target="_blank" className='subNavItem-link'>{subNavItem.icon}<span className='ml-3'>{subNavItem.name}</span></a>
             }
           </NavItem>
         ))}

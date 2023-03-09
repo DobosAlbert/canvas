@@ -46,12 +46,12 @@ export const Navbar = () => {
   return (
     <>
       <BsNavbar>
-        <div className='container-fluid px-0 px-md-5 d-flex align-items-sm-start justify-content-around'>
+        <div className='container-fluid px-0 px-md-5 d-flex justify-content-around'>
           <Nav className='py-3 d-none d-sm-block' style={{ width: "30vw" }}>
             {isLoggedIn && (
               <>
                 <NavItem>
-                  <Link className='navItem-link' to={routeNames.dashboard}>Dashboard</Link>
+                  <Link className='navItem-link text-bold' to={routeNames.dashboard}>Dashboard</Link>
                 </NavItem>
               </>
             )}
@@ -62,16 +62,16 @@ export const Navbar = () => {
               <>
                 <NavItem className='py-3 d-none d-sm-block'>
                   <p className='navItem-link d-flex align-items-center token-amount'>
-                  <EccuLogo width={24} height={24} className={'mr-2'} /> {eccuBalance}
+                  <EccuLogo width={20} height={20} className={'mr-2'} /> ${eccuBalance}
                   </p>
                 </NavItem>
                 <NavItem className='ml-2 py-3 d-none d-sm-block'>
                   <p className='navItem-link d-flex align-items-center token-amount'>
-                  <img src='https://media.elrond.com/tokens/asset/ESTAR-461bab/logo.svg' width={24} height={24} className={'mr-2'} /> {estarBalance}
+                  <img src='https://media.elrond.com/tokens/asset/ESTAR-461bab/logo.svg' width={20} height={20} className={'mr-2'} /> ${estarBalance}
                   </p>
                 </NavItem>
                 <NavItem className='ml-2'>
-                  <p className='navItem-link' onClick={handleLogout}>
+                  <p className='navItem-link custom-btn' onClick={handleLogout}>
                     Logout
                   </p>
                 </NavItem>
@@ -79,7 +79,7 @@ export const Navbar = () => {
             )}
             {!isLoggedIn && (
               <NavItem>
-                <Link className='navItem-link' to={routeNames.unlock}>
+                <Link className='navItem-link custom-btn' to={routeNames.unlock}>
                   Connect
                 </Link>
               </NavItem>
