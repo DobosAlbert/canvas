@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useGetAccountInfo, useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
 import { logout } from '@multiversx/sdk-dapp/utils';
-import { Navbar as BsNavbar, NavItem, Nav, NavbarBrand } from 'react-bootstrap';
+import { Navbar as BsNavbar, NavItem, Nav, NavbarBrand, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { routeNames } from 'routes';
 import { ReactComponent as Logo } from '../../../assets/img/logo.svg';
@@ -9,6 +9,7 @@ import { ReactComponent as EccuLogo } from '../../../assets/img/eccu.svg';
 import axios from 'axios';
 import { API_URL } from '../../../config';
 import { SubMenu } from './SubMenu';
+import { ResourcesMenu } from './ResourcesMenu';
 
 export const Navbar = () => {
   const [eccuBalance, setEccuBalance] = useState<number>(0);
@@ -87,7 +88,10 @@ export const Navbar = () => {
           </Nav>
         </div>
       </BsNavbar>
-      <SubMenu />
+      <Container>
+        <SubMenu />
+        <ResourcesMenu />
+      </Container>
     </>
   );
 };

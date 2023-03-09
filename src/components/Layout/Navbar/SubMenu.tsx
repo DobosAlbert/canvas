@@ -43,6 +43,12 @@ const subNavItems = [
       link: "https://www.frameit.gg/marketplace/XCASTLE-ee733b/items",
       icon: <FontAwesomeIcon icon={faPager} />
     },
+    {
+      name: "My Wallet",
+      label: "my-wallet",
+      link: routeNames.dashboard,
+      icon: <FontAwesomeIcon icon={faPager} />
+    },
   ]
 
 export const SubMenu = () => {
