@@ -9,6 +9,7 @@ import { ReactComponent as EccuLogo } from '../../../assets/img/eccu.svg';
 import axios from 'axios';
 import { API_URL } from '../../../config';
 import { SubMenu } from './SubMenu';
+import { ResourcesMenu } from './ResourcesMenu';
 
 export const Navbar = () => {
   const [eccuBalance, setEccuBalance] = useState<number>(0);
@@ -88,6 +89,7 @@ export const Navbar = () => {
         </div>
       </BsNavbar>
       <SubMenu />
+      <ResourcesMenu />
     </>
   );
 };
