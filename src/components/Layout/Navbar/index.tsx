@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useGetAccountInfo, useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
 import { logout } from '@multiversx/sdk-dapp/utils';
-import { Navbar as BsNavbar, NavItem, Nav, NavbarBrand } from 'react-bootstrap';
+import { Navbar as BsNavbar, NavItem, Nav, NavbarBrand, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { routeNames } from 'routes';
 import { ReactComponent as Logo } from '../../../assets/img/logo.svg';
@@ -88,8 +88,10 @@ export const Navbar = () => {
           </Nav>
         </div>
       </BsNavbar>
-      <SubMenu />
-      <ResourcesMenu />
+      <Container>
+        <SubMenu />
+        <ResourcesMenu />
+      </Container>
     </>
   );
 };
