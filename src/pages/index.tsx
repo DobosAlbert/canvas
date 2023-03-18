@@ -4,4 +4,5 @@ export * from './PageNotFound';
 export * from './Unlock';
 export * from './MyCastle';
 export * from './Shop';
-export * from './Bank';
+export * from './Leaderboard';
+export * from './MyWallet';

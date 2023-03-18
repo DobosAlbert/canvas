@@ -31,6 +31,10 @@ export const SFTsToSwap = ({sftSelected, setSftSelected}: {sftSelected: NftType 
 
     useEffect(() => {
         fetchSfts()
+
+        return () => {
+            setSfts([]);
+        }
     }, []);
 
     useEffect(() => {

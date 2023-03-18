@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { EnvironmentsEnum } from '@multiversx/sdk-dapp/types';
 import {
   TransactionsToastList,
@@ -20,8 +20,18 @@ import {
 import { PageNotFound, Unlock } from 'pages';
 import { routeNames } from 'routes';
 import { routes } from 'routes';
+import { useGetAccountInfo } from '@multiversx/sdk-dapp/hooks';
+import account from './store/AccountStore';
 
 export const App = () => {
+  const { address } = useGetAccountInfo();
+  
+  useEffect(() => {
+    account.loadSfts(address);
+
+    return () => account.reset();
+  }, [address])
+
   return (
     <AxiosInterceptorContext.Provider>
       <AxiosInterceptorContext.Interceptor

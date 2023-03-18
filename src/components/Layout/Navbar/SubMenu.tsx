@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Nav, NavItem } from 'react-bootstrap'
 import {
-    faBank,
     faBuilding,
     faCartShopping,
+    faList,
     faPager,
-    faRightLeft
+    faRightLeft,
+    faWallet
   } from '@fortawesome/free-solid-svg-icons';
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { routeNames } from 'routes';
@@ -32,10 +33,10 @@ const subNavItems = [
       icon: <FontAwesomeIcon icon={faCartShopping} />
     },
     {
-      name: "Bank",
-      label: "bank",
-      link: routeNames.bank,
-      icon: <FontAwesomeIcon icon={faBank} />
+      name: "Leaderboard",
+      label: "leaderboard",
+      link: routeNames.leaderBoard,
+      icon: <FontAwesomeIcon icon={faList} />
     },
     {
       name: "Secondary Market",
@@ -45,9 +46,9 @@ const subNavItems = [
     },
     {
       name: "My Wallet",
-      label: "my-wallet",
-      link: routeNames.dashboard,
-      icon: <FontAwesomeIcon icon={faPager} />
+      label: "wallet",
+      link: routeNames.myWallet,
+      icon: <FontAwesomeIcon icon={faWallet} />
     },
   ]
 

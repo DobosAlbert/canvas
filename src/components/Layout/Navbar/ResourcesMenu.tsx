@@ -2,6 +2,7 @@ import { Nav, NavItem } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBeer, faBowlFood, faCubes, faMountain, faShield, faShirt, faTree, faWheatAwn } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
+import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks'
 
 const resourcesList = [
     {
@@ -31,6 +32,9 @@ const resourcesList = [
 ]
 
 export const ResourcesMenu = () => {
+  const isLoggedIn = useGetIsLoggedIn();
+
+  if (!isLoggedIn) return null;
   return (
     <Nav className='d-none mx-auto d-sm-flex mx-sm-0 justify-content-center align-items-center mt-3 resources-menu text-center'>
         {resourcesList.map((resource, index) => (
