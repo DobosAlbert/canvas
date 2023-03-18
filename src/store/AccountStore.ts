@@ -19,6 +19,9 @@ class AccountStore {
         })
     }
 
+    reset(): void {
+        this.sfts = [];
+    }
 }
 
 const account = new AccountStore(new AccountService());
