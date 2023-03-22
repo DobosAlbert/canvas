@@ -1,13 +1,14 @@
 import { makeAutoObservable, runInAction, action } from "mobx";
 import AccountService from './services/AccountService';
 import { NftType } from '@multiversx/sdk-dapp/types/tokens.types';
+import { SFTStaked } from '../utils/types/SftsStaked';
 
 class AccountStore {
-    sfts: NftType[];
+    sfts: NftType[] = [];
+    sftsStaked: SFTStaked[] = [];
     constructor(public readonly accountService: AccountService){
         makeAutoObservable(this);
         this.accountService = accountService;
-        this.sfts = [];
     }
     
     async loadSfts(address: string): Promise<void> {
@@ -19,8 +20,17 @@ class AccountStore {
         })
     }
 
+    async loadSftsStaked(address: string): Promise<void> {
+        const sftsStaked = await this.accountService.fetchSftsStaked(address);
+        if(sftsStaked.length === 0) return;
+        runInAction(() => {
+            this.sftsStaked = sftsStaked;
+        })
+    }
+
     reset(): void {
         this.sfts = [];
+        this.sftsStaked = [];
     }
 }
 
