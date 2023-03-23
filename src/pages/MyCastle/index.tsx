@@ -1,1 +1,1 @@
-export * from './MyCastle'
+export * from './MyCastle';

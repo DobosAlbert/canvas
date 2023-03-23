@@ -1,1 +1,1 @@
-export * from "./DisplaySftsSelectable";
+export * from './DisplaySftsSelectable';

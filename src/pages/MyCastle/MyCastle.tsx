@@ -1,4 +1,7 @@
-import { useGetAccountInfo, useGetActiveTransactionsStatus } from '@multiversx/sdk-dapp/hooks';
+import {
+  useGetAccountInfo,
+  useGetActiveTransactionsStatus
+} from '@multiversx/sdk-dapp/hooks';
 import { useEffect } from 'react';
 import account from '../../store/AccountStore';
 import { PageLayout } from '../../components/PageLayout';
@@ -15,11 +18,10 @@ export const MyCastle = observer(() => {
     account.loadRewards(address);
   }, []);
 
-
-    useEffect(() => {
-      account.loadSfts(address);
-      account.loadSftsStaked(address)
-    }, [success, fail])
+  useEffect(() => {
+    account.loadSfts(address);
+    account.loadSftsStaked(address);
+  }, [success, fail]);
 
   return (
     <PageLayout>
@@ -39,5 +41,5 @@ export const MyCastle = observer(() => {
         </Col>
       </Row> */}
     </PageLayout>
-  )
-})
+  );
+});

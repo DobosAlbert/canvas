@@ -7,7 +7,7 @@ import {
 } from '@multiversx/sdk-dapp/UI';
 import {
   DappProvider,
-  AxiosInterceptorContext // using this is optional
+  AxiosInterceptorContext
 } from '@multiversx/sdk-dapp/wrappers';
 
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
@@ -22,15 +22,16 @@ import { routeNames } from 'routes';
 import { routes } from 'routes';
 import { useGetAccountInfo } from '@multiversx/sdk-dapp/hooks';
 import account from './store/AccountStore';
+import stakingStore from 'store/StakingStore';
 
 export const App = () => {
   const { address } = useGetAccountInfo();
-  
+
   useEffect(() => {
     account.loadSfts(address);
-
+    stakingStore.loadSftsAllowed();
     return () => account.reset();
-  }, [address])
+  }, [address]);
 
   return (
     <AxiosInterceptorContext.Provider>
