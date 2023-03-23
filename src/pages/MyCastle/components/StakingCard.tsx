@@ -8,38 +8,42 @@ import { useGetAccountInfo } from '@multiversx/sdk-dapp/hooks';
 import { unStakeTransaction } from '../../../utils/transactions/unstake';
 
 export const StakingCard = observer(() => {
-    const { sfts, sftsStaked } = account;
+    const { sfts, sftsStaked, rewards } = account;
     const { sftSelected, amount, category } = sftStore;
     const { address } = useGetAccountInfo();
 
   return (
-    <Card>
-        <Card.Title className='d-flex justify-content-between'><h3>Buildings</h3><h4>Buy on FrameIT</h4></Card.Title>
+    <Card style={{ backgroundColor: "#F5DECC" }}>
+        <Card.Title className='d-block d-md-flex justify-content-between pt-4 px-4'><h3>Buildings</h3><h4>Buy on FrameIT</h4></Card.Title>
         <Card.Body>
             <div className="staking-card-content mb-2">
-                <div className='d-flex'>
-                    <div className="staking-card-content-category">
-                        <h4>Your staked sfts</h4>
-                        <h2>0 SFTs</h2>
+                <div className='d-flex mb-3'>
+                    <div className="staking-card-content-category mr-3">
+                        <h6>Your staked sfts</h6>
+                        <h4>{sftsStaked.length} SFTs</h4>
+                        <button
+                            className='btn custom-btn'
+                            disabled={sftSelected ? category === Category.unStake ? false : true : true}
+                            onClick={() => {
+                                unStakeTransaction({amount, nonce: sftSelected?.nonce});
+                                sftStore.resetSft();
+                            }}
+                        >
+                            UnStake
+                        </button>
                     </div>
                     <div className="staking-card-content-category">
-                        <h4>Your rewards</h4>
-                        <h2>0 ECCU</h2>
+                        <h6>Your rewards</h6>
+                        <h4>0 ECCU</h4>
+                        <button
+                            className='btn custom-btn'
+                            disabled={rewards > 0 ? false : true}
+                        >
+                            Claim
+                        </button>
                     </div>
                 </div>
-                <div className="staking-card-content-buttons">
-                    <button className='btn custom-btn'>Claim</button>
-                    <button
-                        className='btn custom-btn'
-                        disabled={sftSelected ? category === Category.unStake ? false : true : true}
-                        onClick={() => {
-                            unStakeTransaction({amount, nonce: sftSelected?.nonce});
-                            sftStore.resetSft();
-                        }}
-                    >
-                        UnStake
-                    </button>
-                </div>
+                <p>Select a SFT to unStake!</p>
                 <div className="staking-card-content-sfts">
                     <Row>
                         <DisplaySftsSelectable sfts={sftsStaked} category={Category.unStake} />
@@ -47,14 +51,11 @@ export const StakingCard = observer(() => {
                 </div>
             </div>
             <div className="staking-card-content">
-                <div className='d-flex'>
+                <div className='d-flex mb-3'>
                     <div className="staking-card-content-category">
-                        <h4>Your sfts</h4>
-                        <h2>0 SFTs</h2>
-                    </div>
-                </div>
-                <div className="staking-card-content-buttons">
-                    <button
+                        <h6>Your sfts</h6>
+                        <h4>{sfts.length} SFTs</h4>
+                        <button
                         className='btn custom-btn'
                         disabled={sftSelected ? category === Category.stake ? false : true : true}
                         onClick={() => {
@@ -64,7 +65,9 @@ export const StakingCard = observer(() => {
                     >
                         Stake
                     </button>
+                    </div>
                 </div>
+                <p>Select a SFT to stake!</p>
                 <div className="staking-card-content-sfts">
                     <Row>
                         <DisplaySftsSelectable sfts={sfts} category={Category.stake} />

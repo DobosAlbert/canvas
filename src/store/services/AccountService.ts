@@ -24,6 +24,16 @@ class AccountService {
             return [];
         }
     }
+
+    async fetchRewards(address: string): Promise<number> {
+        try {
+            const { data } = await axios.get(MICROSERVICE_URL + '/stake/users/' + address  + '/rewards');
+            return data;
+        } catch (err) {
+            console.log(err)
+            return 0;
+        }
+    }
 }
 
 export default AccountService;

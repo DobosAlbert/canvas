@@ -1,6 +1,6 @@
 import { refreshAccount } from '@multiversx/sdk-dapp/utils';
 import { sendTransactions } from '@multiversx/sdk-dapp/services';
-import { contractAddress, COLLECTION_IDENTIFIER } from '../../config';
+import { stakeAddress, COLLECTION_IDENTIFIER } from '../../config';
 import { numHex } from '../functions/numHex';
 import { Address } from '@multiversx/sdk-core/out';
 export const stakeTransaction = async ({amount, reciver, nonce = 1}: {amount: number, reciver?: string, nonce?: number}) => {
@@ -14,10 +14,10 @@ export const stakeTransaction = async ({amount, reciver, nonce = 1}: {amount: nu
             + '@'
             + numHex(amount)
             + '@'
-            + new Address(contractAddress).hex()
+            + new Address(stakeAddress).hex()
             + '@'
             + Buffer.from('stake').toString('hex'),
-        receiver: reciver ? reciver : contractAddress,
+        receiver: reciver ? reciver : stakeAddress,
         gasLimit: 60000000
     };
     await refreshAccount();

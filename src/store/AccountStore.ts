@@ -6,6 +6,7 @@ import { SFTStaked } from '../utils/types/SftsStaked';
 class AccountStore {
     sfts: NftType[] = [];
     sftsStaked: SFTStaked[] = [];
+    rewards: number = 0;
     constructor(public readonly accountService: AccountService){
         makeAutoObservable(this);
         this.accountService = accountService;
@@ -25,6 +26,14 @@ class AccountStore {
         if(sftsStaked.length === 0) return;
         runInAction(() => {
             this.sftsStaked = sftsStaked;
+        })
+    }
+
+    async loadRewards(address: string): Promise<void> {
+        const rewards = await this.accountService.fetchRewards(address);
+        if(!rewards) return;
+        runInAction(() => {
+            this.rewards = rewards;
         })
     }
 

@@ -1,4 +1,6 @@
-export const contractAddress =
+export const swapAddress =
+  'erd1qqqqqqqqqqqqqpgqzfu6mh4ryxmv2x7va4cuc437nh3qaq7lwmfs2fctds';
+export const stakeAddress =
   'erd1qqqqqqqqqqqqqpgqdjfrnwzygxl06n2v0js6ar0vjwgmcjnswmfsays9c6';
 export const dAppName = 'example Dapp';
 export const walletConnectV2ProjectId = '9b1a9564f91cb659ffe21b73d5c4e2d8';

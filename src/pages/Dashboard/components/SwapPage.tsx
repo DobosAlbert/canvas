@@ -7,7 +7,7 @@ import { sendTransactions } from '@multiversx/sdk-dapp/services';
 import { useGetAccountInfo } from '@multiversx/sdk-dapp/hooks';
 import { numHex } from 'utils/functions/numHex';
 import { Address } from '@multiversx/sdk-core/out';
-import { contractAddress } from '../../../config';
+import { swapAddress } from '../../../config';
 
 export const SwapPage = () => {
     const { address } = useGetAccountInfo();
@@ -23,7 +23,7 @@ export const SwapPage = () => {
             + '@'
             + numHex(Number(sftSelected.balance))
             + '@'
-            + new Address(contractAddress).hex()
+            + new Address(swapAddress).hex()
             + '@'
             + Buffer.from('swap').toString('hex')
 

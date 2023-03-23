@@ -40,9 +40,9 @@ export const DisplaySft = observer(({sft, category}: {sft: NftType | SFTStaked, 
       <Card.Header className='d-flex justify-content-between'><span>{sft.name ? sft.name : sftDetails?.name}</span><span>x{sft.balance}</span></Card.Header>
       {
           sftSelected?.identifier === sft.identifier && sftStore.category === category && <div className='d-flex justify-content-between'>
-              <button className='btn custom-btn' onClick={() => sftStore.increase()}>+</button>
+              <button className='btn custom-btn border-fit-1' onClick={() => sftStore.increase()}>+</button>
               <h4>{amount}</h4>
-              <button className='btn custom-btn' onClick={() => sftStore.decrease()}>-</button>
+              <button className='btn custom-btn border-fit-2' onClick={() => sftStore.decrease()}>-</button>
           </div>
       }
   </Card>
