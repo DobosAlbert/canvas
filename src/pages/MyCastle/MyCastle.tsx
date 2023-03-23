@@ -4,7 +4,9 @@ import account from '../../store/AccountStore';
 import { PageLayout } from '../../components/PageLayout';
 import { Col, Row } from 'react-bootstrap';
 import { StakingCard } from './components/StakingCard';
-export const MyCastle = () => {
+import { observer } from 'mobx-react-lite';
+
+export const MyCastle = observer(() => {
   const { address } = useGetAccountInfo();
 
   useEffect(() => {
@@ -25,4 +27,4 @@ export const MyCastle = () => {
       </Row>
     </PageLayout>
   )
-}
+})

@@ -1,5 +1,8 @@
 export interface SFTStaked {
+    identifier: string;
+    name?: string;
+    url?: string;
     nonce: number;
-    amount: number;
+    balance: number;
     staked_at: number;
 }
