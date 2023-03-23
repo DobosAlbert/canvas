@@ -17,7 +17,7 @@ class AccountService {
 
     async fetchSftsStaked(address: string): Promise<SFTStaked[]> {
         try {
-            const { data } = await axios.get(MICROSERVICE_URL + '/stake/users/' + 'erd1a6p39rlsn2lm20adqe5tmzy543luwqx4dywzflr2dmtwdf75xszqdw9454');
+            const { data } = await axios.get(MICROSERVICE_URL + '/stake/users/' + address);
             return data;
         } catch (err) {
             console.log(err)
