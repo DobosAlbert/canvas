@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactComponent as HeartIcon } from '../../../assets/img/heart.svg';
 
 export const Footer = () => {
@@ -10,9 +9,9 @@ export const Footer = () => {
             target: '_blank'
           }}
           className='d-flex align-items-center'
-          href='https://multiversx.com/'
+          href='https://estar.games/'
         >
-          Made with <HeartIcon className='mx-1' /> by the MultiversX team
+          Made with <HeartIcon className='mx-1' /> by the Estar team
         </a>
       </div>
     </footer>

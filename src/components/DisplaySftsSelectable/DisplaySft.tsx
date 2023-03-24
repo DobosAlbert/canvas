@@ -5,8 +5,9 @@ import { Card } from 'react-bootstrap';
 import { sftStore, Category } from '../../pages/MyCastle/store/SftStore';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../config';
+import { API_URL, sftsRewards } from '../../config';
 import { Loading } from 'components/Loading';
+import { EccuLogo } from 'assets/img';
 
 export const DisplaySft = observer(
   ({ sft, category }: { sft: NftType | SFTStaked; category?: Category }) => {
@@ -46,11 +47,18 @@ export const DisplaySft = observer(
             : undefined
         }`}
       >
-        <Card.Img
-          src={sft.url ? sft.url : sftDetails?.url}
-          style={{ borderRadius: '10px 10px 0 0' }}
-          onClick={() => sftStore.setSft(sft, category)}
-        ></Card.Img>
+        <div className='image-container'>
+          <Card.Img
+            src={sft.url ? sft.url : sftDetails?.url}
+            style={{ borderRadius: '10px 10px 0 0' }}
+            onClick={() => sftStore.setSft(sft, category)}
+          />
+          <div className='image-badge-left'>
+            <h5 className='pt-1 mr-1'>{sft.nonce ? sftsRewards.find((sft_nonce) => sft_nonce.nonce === Number(sft.nonce))?.reward : 0}</h5>
+            <EccuLogo width={"25px"} height={'25px'} />
+          </div>
+          <h5 className='image-badge-right'>/daily</h5>
+        </div>
         <Card.Header className='d-flex justify-content-between'>
           <span>{sft.name ? sft.name : sftDetails?.name}</span>
           <span>x{sft.balance}</span>
@@ -60,16 +68,16 @@ export const DisplaySft = observer(
             <div className='d-flex justify-content-between'>
               <button
                 className='btn custom-btn border-fit-1'
-                onClick={() => sftStore.increase()}
+                onClick={() => sftStore.decrease()}
               >
-                +
+                -
               </button>
               <h4>{amount}</h4>
               <button
                 className='btn custom-btn border-fit-2'
-                onClick={() => sftStore.decrease()}
+                onClick={() => sftStore.increase()}
               >
-                -
+                +
               </button>
             </div>
           )}

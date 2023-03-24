@@ -1,0 +1,1 @@
+export { ReactComponent as EccuLogo } from './eccu.svg';

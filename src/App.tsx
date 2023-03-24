@@ -12,11 +12,7 @@ import {
 
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import { Layout } from 'components';
-import {
-  apiTimeout,
-  walletConnectV2ProjectId,
-  sampleAuthenticatedDomains
-} from 'config';
+import { apiTimeout, walletConnectV2ProjectId } from 'config';
 import { PageNotFound, Unlock } from 'pages';
 import { routeNames } from 'routes';
 import { routes } from 'routes';
@@ -35,9 +31,7 @@ export const App = () => {
 
   return (
     <AxiosInterceptorContext.Provider>
-      <AxiosInterceptorContext.Interceptor
-        authenticatedDomanis={sampleAuthenticatedDomains}
-      >
+      <AxiosInterceptorContext.Interceptor authenticatedDomanis={[]}>
         <Router>
           <DappProvider
             environment={EnvironmentsEnum.mainnet}
