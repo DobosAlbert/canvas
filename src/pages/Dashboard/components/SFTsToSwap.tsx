@@ -25,7 +25,7 @@ export const SFTsToSwap = ({
   setSftSelected: (arg: any) => void;
 }) => {
   const { address } = useGetAccountInfo();
-  const { success } = useGetActiveTransactionsStatus();
+  const { success, fail } = useGetActiveTransactionsStatus();
   const [loading, setLoading] = useState<boolean>(false);
   const [sfts, setSfts] = useState<NftType[]>([]);
 
@@ -57,7 +57,7 @@ export const SFTsToSwap = ({
 
   useEffect(() => {
     fetchSfts();
-  }, [success]);
+  }, [success, fail]);
 
   if (loading) {
     return (

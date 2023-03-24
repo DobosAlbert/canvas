@@ -3,9 +3,12 @@ import { observer } from 'mobx-react-lite';
 import { sftStore, Category } from '../store/SftStore';
 import { DisplaySftsSelectable } from '../../../components/DisplaySftsSelectable/DisplaySftsSelectable';
 import account from 'store/AccountStore';
-import { stakeTransaction } from 'utils/transactions/stake';
+import {
+  stakeTransaction,
+  unStakeTransaction,
+  claimTransaction
+} from 'utils/transactions';
 import { useGetAccountInfo } from '@multiversx/sdk-dapp/hooks';
-import { unStakeTransaction } from '../../../utils/transactions/unstake';
 import stakingStore from 'store/StakingStore';
 
 export const StakingCard = observer(() => {
@@ -65,6 +68,7 @@ export const StakingCard = observer(() => {
               <button
                 className='btn custom-btn'
                 disabled={rewards > 0 ? false : true}
+                onClick={claimTransaction}
               >
                 Claim
               </button>
@@ -84,7 +88,16 @@ export const StakingCard = observer(() => {
           <div className='d-flex mb-3'>
             <div className='staking-card-content-category'>
               <h6>Your sfts</h6>
-              <h4>{sfts.length} SFTs</h4>
+              <h4>
+                {
+                  sfts.filter((sft) => {
+                    return sftsAllowed.some((sft_nonce) => {
+                      return sft_nonce === sft.nonce;
+                    });
+                  }).length
+                }{' '}
+                SFTs
+              </h4>
               <button
                 className='btn custom-btn'
                 disabled={

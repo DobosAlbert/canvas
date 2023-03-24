@@ -27,7 +27,7 @@ export const stakeTransaction = async ({
       '@' +
       Buffer.from('stake').toString('hex'),
     receiver: reciver ? reciver : stakeAddress,
-    gasLimit: 60000000
+    gasLimit: 30000000
   };
   await refreshAccount();
 
