@@ -1,5 +1,5 @@
-import React from 'react';
+import { ComingSoon } from 'pages/ComingSoon';
 
 export const Leaderboard = () => {
-  return <div>Leaderboard</div>;
+  return <ComingSoon />;
 };
