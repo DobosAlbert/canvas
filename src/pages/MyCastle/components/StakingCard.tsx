@@ -64,7 +64,7 @@ export const StakingCard = observer(() => {
             </div>
             <div className='staking-card-content-category'>
               <h6>Your rewards</h6>
-              <h4>0 ECCU</h4>
+              <h4>{rewards} ECCU</h4>
               <button
                 className='btn custom-btn'
                 disabled={rewards > 0 ? false : true}
