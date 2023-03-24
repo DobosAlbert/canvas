@@ -6,9 +6,7 @@ import {
   faCubes,
   faMountain,
   faShield,
-  faShirt,
-  faTree,
-  faWheatAwn
+  faTree
 } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
@@ -58,7 +56,7 @@ export const ResourceItem = ({
 }: {
   resource: { name: string; icon: any };
 }) => {
-  const [amount, setAmount] = useState<number>(202200);
+  const [amount, setAmount] = useState<number>(0);
   return (
     <NavItem key={resource.name} className={'mb-3 mb-sm-0 mr-0 mr-sm-4'}>
       <div>
@@ -67,7 +65,7 @@ export const ResourceItem = ({
       </div>
       <div className='d-flex justify-content-center'>
         {amount}
-        <span className='ml-3'>+1</span>
+        <span className='ml-3'>+0</span>
       </div>
     </NavItem>
   );
