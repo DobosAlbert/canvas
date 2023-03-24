@@ -2,7 +2,14 @@ import { RouteType } from '@multiversx/sdk-dapp/types';
 import { dAppName } from 'config';
 import { withPageTitle } from './components/PageTitle';
 
-import { Leaderboard, Dashboard, Home, MyCastle, MyWallet, Shop } from './pages';
+import {
+  Leaderboard,
+  Dashboard,
+  Home,
+  MyCastle,
+  MyWallet,
+  Shop
+} from './pages';
 
 export const routeNames = {
   home: '/',

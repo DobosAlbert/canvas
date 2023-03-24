@@ -14,5 +14,5 @@ export const MyWallet = () => {
         <DisplaySfts xs={12} sm={4} md={3} func={() => {}} />
       </Row>
     </PageLayout>
-  )
-}
+  );
+};
