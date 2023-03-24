@@ -19,7 +19,10 @@ const UnlockPage = () => {
   return (
     <div className='home d-flex flex-fill align-items-center'>
       <div className='m-auto' data-testid='unlockPage'>
-        <div className='card my-4 text-center' style={{ background: "#F5DECC" }}>
+        <div
+          className='card my-4 text-center'
+          style={{ background: '#F5DECC' }}
+        >
           <div className='card-body py-4 px-2 px-sm-2 mx-lg-4 d-flex flex-column'>
             <h4 className='mb-4 text-bold'>Login</h4>
             <ExtensionLoginButton
