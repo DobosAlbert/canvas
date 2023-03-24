@@ -18,7 +18,23 @@ export const StakingCard = observer(() => {
     <Card style={{ backgroundColor: '#F5DECC' }}>
       <Card.Title className='d-block d-md-flex justify-content-between pt-4 px-4'>
         <h3>Buildings</h3>
-        <h4>Buy on FrameIT</h4>
+        <a
+          className='text-decoration-none text-dark'
+          target={'_blank'}
+          href={'https://www.frameit.gg/marketplace/XCASTLE-ee733b/items'}
+        >
+          <h4>
+            Buy on{' '}
+            <img
+              src='https://www.frameit.gg/assets/img/logo/frameit_logo_grey.svg'
+              className='mx-2'
+              width={'30px'}
+              height={'38px'}
+              alt={'frameIt'}
+            />
+            FrameIT
+          </h4>
+        </a>
       </Card.Title>
       <Card.Body>
         <div className='staking-card-content mb-2'>
