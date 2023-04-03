@@ -24,7 +24,7 @@ export const App = () => {
   const { address } = useGetAccountInfo();
 
   useEffect(() => {
-    account.loadSfts(address);
+    account.loadAccount(address);
     stakingStore.loadSftsAllowed();
     return () => account.reset();
   }, [address]);

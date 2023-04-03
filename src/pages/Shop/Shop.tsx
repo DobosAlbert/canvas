@@ -23,7 +23,7 @@ export const Shop = () => {
   }, []);
 
   return <PageLayout>
-    <Row>
+    <Row className='mb-3'>
       <Col>
         <h1 className='text-center'>Shop</h1>
       </Col>

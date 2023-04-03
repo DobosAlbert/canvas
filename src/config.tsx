@@ -2,12 +2,16 @@ export const swapAddress =
   'erd1qqqqqqqqqqqqqpgqzfu6mh4ryxmv2x7va4cuc437nh3qaq7lwmfs2fctds';
 export const stakeAddress =
   'erd1qqqqqqqqqqqqqpgqdjfrnwzygxl06n2v0js6ar0vjwgmcjnswmfsays9c6';
+export const marketplaceAddress =
+  'erd1qqqqqqqqqqqqqpgqrcevydh86avvklugsg9mpdhd2yqh4mstwmfsjhv3jk';
 export const dAppName = 'xCastle';
 export const walletConnectV2ProjectId = '9b1a9564f91cb659ffe21b73d5c4e2d8';
 export const apiTimeout = 6000;
 export const transactionSize = 15;
 export const MICROSERVICE_URL = 'https://localhost:3141';
-export const API_URL = 'https://devnet-api.multiversx.com';
+export const API_URL = 'https://api.multiversx.com';
+export const TOKEN_IDENTIFIER = 'ESTAR-461bab';
+export const TOKEN_DECIMALS = 1000000000000000000;
 export const COLLECTION_IDENTIFIER = 'XCASTLE-ee733b';
 export const sftsRewards = [
   {
