@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction, action } from 'mobx';
 import AccountService from './services/AccountService';
 import { NftType } from '@multiversx/sdk-dapp/types/tokens.types';
-import { SFTStaked } from '../utils/types/SftsStaked';
+import { SFTStaked } from '../utils/types';
 
 class AccountStore {
   sfts: NftType[] = [];

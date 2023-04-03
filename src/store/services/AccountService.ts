@@ -1,7 +1,7 @@
 import { NftType } from '@multiversx/sdk-dapp/types/tokens.types';
 import axios from 'axios';
 import { API_URL, COLLECTION_IDENTIFIER, MICROSERVICE_URL } from '../../config';
-import { SFTStaked } from '../../utils/types/SftsStaked';
+import { SFTStaked } from '../../utils/types';
 class AccountService {
   constructor() {}
 
