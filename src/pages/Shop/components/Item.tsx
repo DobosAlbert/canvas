@@ -54,7 +54,7 @@ export const Item = observer(({item}: {item: ShopItem}) => {
         buyItemTransaction({estar_amount: item.price * amount, amount, nonce: item.nonce});
     }
 
-    if(loading) return (<Col xs={12} sm={4} md={3}>
+    if(loading) return (<Col xs={12} sm={6} md={4} lg={3} xl={3}>
         <Card className="loading-skeleton">
             <Card.Img src="//placekitten.com/300/250" alt="..." style={{ minHeight: "250px" }} />
             <Card.Header className='d-flex justify-content-between align-items-center'>
@@ -65,13 +65,19 @@ export const Item = observer(({item}: {item: ShopItem}) => {
     </Col>)
 
   return (
-    <Col xs={12} sm={4} md={3}>
+    <Col xs={12} sm={6} md={4} lg={3} xl={3}>
         <Card>
             <div className='image-container'>
                 <Card.Img src={sftDetails?.url} style={{ borderRadius: '10px 10px 0 0', minHeight: "200px" }} />
                 <div className='image-badge-left'>
                     <h5 className='pt-1 mr-1'>x{item.amount}</h5>
                 </div>
+                <h5 className='image-badge-right'><img
+                      src='https://media.elrond.com/tokens/asset/ESTAR-461bab/logo.svg'
+                      width={20}
+                      height={20}
+                      className={'mr-2'}
+                    />{item.price}</h5>
                 <button className='image-badge-bottom-left mb-2' onClick={decreaseAmount}>-</button>
                 <h5 className='image-badge-bottom-center mb-2'>{amount}</h5>
                 <button className='image-badge-bottom-right mb-2' onClick={increaseAmount}>+</button>

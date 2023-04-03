@@ -69,7 +69,7 @@ export const Navbar = observer(() => {
                       height={20}
                       className={'mr-2'}
                     />{' '}
-                    ${String(estarBalance).slice(0, -18)}
+                    ${estarBalance > 0 ? String(estarBalance).slice(0, -18) : 0}
                   </p>
                 </NavItem>
                 <NavItem className='ml-2'>
