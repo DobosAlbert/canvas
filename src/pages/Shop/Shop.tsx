@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ComingSoon } from 'pages/ComingSoon';
 import { Item } from 'utils/types';
 import { MICROSERVICE_URL } from 'config';
 import axios from 'axios';
@@ -30,9 +29,7 @@ export const Shop = () => {
       </Col>
     </Row>
     <Row>
-      <Col>
-        <ItemsList items={items} />
-      </Col>
+      <ItemsList items={items} />
     </Row>
   </PageLayout>;
 };
