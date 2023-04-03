@@ -123,6 +123,81 @@ body {
   font-size: 18px;
 }
 
+.image-badge-bottom-left {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  padding: 5px 15px;
+  color: black;
+  background-color: #ed9b6b;
+  border-radius: 12px;
+  font-size: 18px;
+  border: none;
+}
+
+.image-badge-bottom-center {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-size: 18px;
+  
+}
+
+.image-badge-bottom-right {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  padding: 5px 15px;
+  color: black;
+  background-color: #ed9b6b;
+  border-radius: 12px;
+  font-size: 18px;
+  border: none;
+}
+
+%loading-skeleton {
+  color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #eee;
+  border-color: #eee;
+
+  &::placeholder {
+    color: transparent;
+  }
+}
+@keyframes loading-skeleton {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.loading-skeleton {
+  pointer-events: none;
+  animation: loading-skeleton 1s infinite alternate;
+  
+  img {
+    filter: grayscale(100) contrast(0%) brightness(1.8);
+  }
+  h1, h2, h3, h4, h5, h6,
+  p, li,
+  .btn,
+  label,
+  .form-control {
+    @extend %loading-skeleton;
+  }
+}
+
 /* Navbar
 -------------------------------------------------- */
 .logo {

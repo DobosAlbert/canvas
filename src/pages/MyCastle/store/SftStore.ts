@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { NftType } from '@multiversx/sdk-dapp/types/tokens.types';
-import { SFTStaked } from '../../../utils/types/SftsStaked';
+import { SFTStaked } from '../../../utils/types';
 export class SFTStore {
   sftSelected: NftType | SFTStaked | undefined = undefined;
   amount: number = 1;

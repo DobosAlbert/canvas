@@ -15,45 +15,18 @@ import { Link } from 'react-router-dom';
 import { routeNames } from 'routes';
 import { ReactComponent as Logo } from '../../../assets/img/logo.svg';
 import { ReactComponent as EccuLogo } from '../../../assets/img/eccu.svg';
-import axios from 'axios';
-import { API_URL } from '../../../config';
 import { SubMenu } from './SubMenu';
 import { ResourcesMenu } from './ResourcesMenu';
+import { observer } from 'mobx-react-lite';
+import account from 'store/AccountStore';
 
-export const Navbar = () => {
-  const [eccuBalance, setEccuBalance] = useState<number>(0);
-  const [estarBalance, setEstarBalance] = useState<number>(0);
+export const Navbar = observer(() => {
+  const { estarBalance, eccuBalance } = account;
   const isLoggedIn = useGetIsLoggedIn();
-  const { address } = useGetAccountInfo();
 
   const handleLogout = () => {
     logout(`${window.location.origin}/unlock`);
   };
-
-  const fetchTokenBalance = async (token: string) => {
-    try {
-      const { data } = await axios.get(
-        API_URL + '/accounts/' + address + '/tokens/' + token
-      );
-      if (token === 'ESTAR-461bab') {
-        setEstarBalance(Number(data.balance.slice(0, -18)));
-      } else {
-        setEccuBalance(Number(data.balance.slice(-18)));
-      }
-    } catch (error) {
-      return 0;
-    }
-  };
-
-  useEffect(() => {
-    fetchTokenBalance('ESTAR-461bab');
-    fetchTokenBalance('ECCU-29891f');
-  }, []);
-
-  useEffect(() => {
-    fetchTokenBalance('ESTAR-461bab');
-    fetchTokenBalance('ECCU-29891f');
-  }, [address]);
 
   return (
     <>
@@ -96,7 +69,7 @@ export const Navbar = () => {
                       height={20}
                       className={'mr-2'}
                     />{' '}
-                    ${estarBalance}
+                    ${estarBalance > 0 ? String(estarBalance).slice(0, -18) : 0}
                   </p>
                 </NavItem>
                 <NavItem className='ml-2'>
@@ -125,4 +98,4 @@ export const Navbar = () => {
       </Container>
     </>
   );
-};
+});

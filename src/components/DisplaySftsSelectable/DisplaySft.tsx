@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { NftType } from '@multiversx/sdk-dapp/types/tokens.types';
-import { SFTStaked } from '../../utils/types/SftsStaked';
+import { SFTStaked } from '../../utils/types';
 import { Card } from 'react-bootstrap';
 import { sftStore, Category } from '../../pages/MyCastle/store/SftStore';
 import { useEffect, useState } from 'react';
