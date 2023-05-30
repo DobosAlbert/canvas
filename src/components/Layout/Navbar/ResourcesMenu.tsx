@@ -43,7 +43,7 @@ export const ResourceItem = ({
         <span className='ml-3'>{resource.name}</span>
       </div>
       <div className='d-flex justify-content-center'>
-        {amount}
+        {/* {amount} */}
         <span className='ml-3'>+0</span>
       </div>
     </NavItem>

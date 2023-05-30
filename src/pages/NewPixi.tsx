@@ -47,14 +47,13 @@ const PixiComponent: React.FC<Props> = ({children}) => {
             sprites.current = textures.map((texture, index) => {
                 const sprite = new PIXI.Sprite(texture);
                 
-                // Dacă este `image3`, adaugă un ascultător de evenimente pentru click
                 if (index === 2) {
                     sprite.interactive = true;
                     sprite.on('pointerdown', () => setShowModal1(true));
                 }
 
                 // Dacă este `image8`, adaugă un ascultător de evenimente pentru click
-                if (index === 6) {
+                if (index === 3) {
                     sprite.interactive = true;
                     sprite.on('pointerdown', () => setShowModal2(true));
                 }
@@ -177,7 +176,7 @@ const PixiComponent: React.FC<Props> = ({children}) => {
                         borderRadius: '0.5em',
                         maxWidth: '80%',
                     }}>
-                        <h2>Modal Content for Image 8</h2>
+                        <h2>Modal Content for Image 4</h2>
                         <button onClick={() => setShowModal2(false)}>Close</button>
                     </div>
                 </div>

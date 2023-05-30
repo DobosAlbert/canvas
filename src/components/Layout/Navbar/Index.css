@@ -10,11 +10,12 @@
   }
 
   .transparent-background {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
     background-color: transparent !important;
   }
 
   .resources-menu .ml-3 {
     color: white;
   }
-  
-  

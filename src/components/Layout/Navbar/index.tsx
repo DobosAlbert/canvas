@@ -12,7 +12,7 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { routeNames } from 'routes';
-import { ReactComponent as Logo } from '../../../assets/img/logo.svg';
+import { ReactComponent as Logo } from '../../../assets/img/eccu.svg';
 import { ReactComponent as EccuLogo } from '../../../assets/img/eccu.svg';
 import { SubMenu } from './SubMenu';
 import { ResourcesMenu } from './ResourcesMenu';
@@ -62,7 +62,7 @@ export const Navbar = observer(() => {
                 <div className='user-avatar'>
                   <Logo className='rounded-circle' width={40} height={40} />
                 </div>
-                <p className='navItem-link'>{'Victor Ponta'}</p>
+                <p className='transparent-background'>{'Victor Ponta'}</p>
               </NavItem>
                 <NavItem className='ml-2'>
                   <p className='navItem-link d-flex align-items-center token-amount'>
