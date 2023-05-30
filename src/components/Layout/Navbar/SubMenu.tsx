@@ -3,25 +3,17 @@ import { Nav, NavItem } from 'react-bootstrap';
 import {
   faBuilding,
   faCartShopping,
-  faList,
-  faPager,
-  faRightLeft,
   faWallet
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { routeNames } from 'routes';
 import { Link, useLocation } from 'react-router-dom';
 import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
+import './SubMenu.css';
 
 const subNavItems = [
   {
-    name: 'Swap',
-    label: 'swap',
-    link: routeNames.dashboard,
-    icon: <FontAwesomeIcon icon={faRightLeft} />
-  },
-  {
-    name: 'My Castle',
+    name: 'Mining',
     label: 'castle',
     link: routeNames.myCastle,
     icon: <FontAwesomeIcon icon={faBuilding} />
@@ -31,18 +23,6 @@ const subNavItems = [
     label: 'shop',
     link: routeNames.shop,
     icon: <FontAwesomeIcon icon={faCartShopping} />
-  },
-  {
-    name: 'Leaderboard',
-    label: 'leaderboard',
-    link: routeNames.leaderBoard,
-    icon: <FontAwesomeIcon icon={faList} />
-  },
-  {
-    name: 'Secondary Market',
-    label: 'secondary-market',
-    link: 'https://www.frameit.gg/marketplace/XCASTLE-ee733b/items',
-    icon: <FontAwesomeIcon icon={faPager} />
   },
   {
     name: 'My Wallet',
@@ -77,7 +57,7 @@ export const SubMenu = () => {
                 activeItem === subNavItem.label
                   ? 'active-subNavItem'
                   : undefined
-              }`}
+              } button`}
               to={subNavItem.link}
               onClick={() => setActiveItem(subNavItem.label)}
             >

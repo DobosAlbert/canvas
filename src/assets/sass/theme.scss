@@ -38,7 +38,7 @@ html {
 body {
   font-family: 'Barlow', sans-serif;
   font-weight: 600;
-  background-color: #FBF2EB !important;
+  background-color: #161a1a !important;
 }
 
 .wrapper {
@@ -72,10 +72,10 @@ body {
 
 .custom-btn {
   color: white !important;
-  background-color: #ed9b6b !important;
+  background-color: #9e66e2 !important;
   padding: 5px 15px !important;
   border-radius: 12px !important;
-  border-color: #ed9b6b !important;
+  border-color: #9e66e2  !important;
 }
 
 .border-fit-1 {
@@ -119,7 +119,7 @@ body {
   top: 0;
   right: 5px;
   padding: 10px 5px 5px 5px;
-  color: black;
+  color: white;
   font-size: 18px;
 }
 
@@ -131,7 +131,7 @@ body {
   left: 5px;
   padding: 5px 15px;
   color: black;
-  background-color: #ed9b6b;
+  background-color: #9e66e2;
   border-radius: 12px;
   font-size: 18px;
   border: none;
@@ -144,7 +144,7 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  color: black;
+  color: #9e66e2;
   font-size: 18px;
   
 }
@@ -157,7 +157,7 @@ body {
   right: 5px;
   padding: 5px 15px;
   color: black;
-  background-color: #ed9b6b;
+  background-color: #9e66e2;
   border-radius: 12px;
   font-size: 18px;
   border: none;
@@ -167,8 +167,8 @@ body {
   color: transparent;
   appearance: none;
   -webkit-appearance: none;
-  background-color: #eee;
-  border-color: #eee;
+  background-color: #9e66e2;
+  border-color: #9e66e2;
 
   &::placeholder {
     color: transparent;
@@ -222,17 +222,17 @@ body {
 }
 
 .subNavItem-link:hover {
-  color: #ed9b6b;
+  color: #b38ce2 ;
 }
 
 .active-subNavItem {
   background-color: #fff8f0;
-  color: #ed9b6b;
+  color: #9e66e2 ;
 }
 
 .token-amount {
   font-size: 14px !important;
-  border: 1px solid #a7a7a7;
+  border: 1px solid #f3f3f3 ;
   border-radius: 10px;
   padding: 5px 10px;
   cursor: unset !important;
@@ -243,14 +243,14 @@ body {
 }
 
 .resources-menu {
-  border-top: 1px solid #a7a7a7;
+  border-top: 1px solid #9e66e2 ;
   padding-top: 10px;
 }
 
 /* Dashboard - Swap
 -------------------------------------------------- */
 .sft-selected {
-  border: 2px #ed9b6b solid !important;
+  border: 2px #9e66e2  solid !important;
 }
 
 /* Actions
@@ -334,10 +334,10 @@ footer {
     line-height: 1.155rem;
 
     a {
-      color: $black;
+      color: $white;
 
       &:hover {
-        color: $black;
+        color: $white;
       }
 
       #heart {

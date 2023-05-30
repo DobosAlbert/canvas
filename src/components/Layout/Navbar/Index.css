@@ -1,0 +1,20 @@
+.navItem-link {
+    color: white;
+    background-color:  #9e66e2; /* sau culoarea mov dorită */
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  
+  .dashboard-button {
+    background-color: transparent;
+  }
+
+  .transparent-background {
+    background-color: transparent !important;
+  }
+
+  .resources-menu .ml-3 {
+    color: white;
+  }
+  
+  

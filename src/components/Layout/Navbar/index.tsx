@@ -8,7 +8,6 @@ import {
   Navbar as BsNavbar,
   NavItem,
   Nav,
-  NavbarBrand,
   Container
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -19,6 +18,7 @@ import { SubMenu } from './SubMenu';
 import { ResourcesMenu } from './ResourcesMenu';
 import { observer } from 'mobx-react-lite';
 import account from 'store/AccountStore';
+import './Index.css';
 
 export const Navbar = observer(() => {
   const { estarBalance, eccuBalance } = account;
@@ -35,33 +35,42 @@ export const Navbar = observer(() => {
           <Nav className='py-3 d-none d-sm-block' style={{ width: '30vw' }}>
             {isLoggedIn && (
               <>
-                <NavItem>
-                  <Link
-                    className='navItem-link text-bold'
-                    to={routeNames.dashboard}
-                  >
-                    Dashboard
-                  </Link>
-                </NavItem>
+               <NavItem>
+                <Link
+                  className='navItem-link text-bold dashboard-button'
+                  to={routeNames.dashboard}
+                >
+                  Dashboard
+                </Link>
+              </NavItem>
               </>
             )}
           </Nav>
-          <NavbarBrand>
+          {/* <NavbarBrand>
             <Logo className='logo d-block mx-auto' />
-          </NavbarBrand>
+          </NavbarBrand> */}
           <Nav
             className='py-3 align-items-center justify-content-end'
             style={{ width: '30vw' }}
           >
             {isLoggedIn && (
               <>
-                <NavItem className='py-3 d-none d-sm-block'>
+               <NavItem
+                className='py-3 d-none d-sm-flex align-items-center user-info'
+                style={{ backgroundColor: 'transparent' }}
+              >
+                <div className='user-avatar'>
+                  <Logo className='rounded-circle' width={40} height={40} />
+                </div>
+                <p className='navItem-link'>{'Victor Ponta'}</p>
+              </NavItem>
+                <NavItem className='ml-2'>
                   <p className='navItem-link d-flex align-items-center token-amount'>
                     <EccuLogo width={20} height={20} className={'mr-2'} /> $
                     {eccuBalance}
                   </p>
                 </NavItem>
-                <NavItem className='ml-2 py-3 d-none d-sm-block'>
+                <NavItem className='ml-2'>
                   <p className='navItem-link d-flex align-items-center token-amount'>
                     <img
                       src='https://media.elrond.com/tokens/asset/ESTAR-461bab/logo.svg'

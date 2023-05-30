@@ -1,40 +1,20 @@
 import { Nav, NavItem } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBeer,
-  faBowlFood,
-  faCubes,
-  faMountain,
-  faShield,
-  faTree
-} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
+import './Index.css';
 
 const resourcesList = [
   {
-    name: 'Food',
-    icon: <FontAwesomeIcon icon={faBowlFood} />
+    name: 'My Power'
   },
   {
-    name: 'Wood',
-    icon: <FontAwesomeIcon icon={faTree} />
+    name: 'Network Power'
   },
   {
-    name: 'Beer',
-    icon: <FontAwesomeIcon icon={faBeer} />
+    name: 'Block Reward'
   },
   {
-    name: 'Iron',
-    icon: <FontAwesomeIcon icon={faMountain} />
-  },
-  {
-    name: 'Stone',
-    icon: <FontAwesomeIcon icon={faCubes} />
-  },
-  {
-    name: 'WarGear',
-    icon: <FontAwesomeIcon icon={faShield} />
+    name: 'Your Reward'
   }
 ];
 
@@ -54,13 +34,12 @@ export const ResourcesMenu = () => {
 export const ResourceItem = ({
   resource
 }: {
-  resource: { name: string; icon: any };
+  resource: { name: string };
 }) => {
   const [amount, setAmount] = useState<number>(0);
   return (
     <NavItem key={resource.name} className={'mb-3 mb-sm-0 mr-0 mr-sm-4'}>
       <div>
-        {resource.icon}
         <span className='ml-3'>{resource.name}</span>
       </div>
       <div className='d-flex justify-content-center'>
