@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  useGetAccountInfo,
   useGetIsLoggedIn
 } from '@multiversx/sdk-dapp/hooks';
 import { logout } from '@multiversx/sdk-dapp/utils';
@@ -12,12 +11,23 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { routeNames } from 'routes';
-import { ReactComponent as Logo } from '../../../assets/img/eccu.svg';
-import { ReactComponent as EccuLogo } from '../../../assets/img/eccu.svg';
+import { ReactComponent as Logo } from '../../../assets/img/Logo.svg';
+import { ReactComponent as Vector } from '../../../assets/img/Vector.svg';
+import { ReactComponent as Logomining } from '../../../assets/img/miningLogo.svg';
+import { ReactComponent as Logoshop } from '../../../assets/img/shop2.svg';
+import { ReactComponent as LogoshopBlack } from '../../../assets/img/shop-iconwhite.svg';
+import { ReactComponent as NormalBtn } from '../../../assets/img/Normal-Btn.svg';
+import { ReactComponent as LogoLeaderboard } from '../../../assets/img/Leaderboard.svg';
+import { ReactComponent as LogoLeaderboardBlack } from '../../../assets/img/leaderboard-iconblack.svg';
+import { ReactComponent as Pozik } from '../../../assets/img/Pozik.svg';
+import { ReactComponent as Logoutbtn } from '../../../assets/img/logout-btn.svg';
+import { ReactComponent as LogoMiningWhite } from '../../../assets/img/play-iconwhite.svg';//aici trebuie schimbat
+import { ReactComponent as LogoWalletWhite } from '../../../assets/img/wallet-iconwhite.svg';
+import { ReactComponent as LogoWallet} from '../../../assets/img/wallet-iconblack.svg';
 import { SubMenu } from './SubMenu';
 import { ResourcesMenu } from './ResourcesMenu';
 import { observer } from 'mobx-react-lite';
-import account from 'store/AccountStore';
+import account from 'store/AccountStore'; 
 import './Index.css';
 
 export const Navbar = observer(() => {
@@ -27,65 +37,130 @@ export const Navbar = observer(() => {
   const handleLogout = () => {
     logout(`${window.location.origin}/unlock`);
   };
+   const [isHovered, setIsHovered] = useState(false);
+   const [isHovered2, setIsHovered2] = useState(false);
+   const [isHovered3, setIsHovered3] = useState(false);
+   const [isHovered4, setIsHovered4] = useState(false);
+
 
   return (
     <>
       <BsNavbar>
-        <div className='container-fluid px-0 px-md-5 d-flex justify-content-around'>
-          <Nav className='py-3 d-none d-sm-block' style={{ width: '30vw' }}>
+          <Nav>
             {isLoggedIn && (
               <>
-               <NavItem>
-                <Link
-                  className='navItem-link text-bold dashboard-button'
-                  to={routeNames.dashboard}
+               <div className='header-item'>
+                  <Logo className='logo' />
+
+                  <a
+                  href="#"
+                  className="button-mining"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                 >
-                  Dashboard
-                </Link>
-              </NavItem>
-              </>
-            )}
-          </Nav>
-          {/* <NavbarBrand>
-            <Logo className='logo d-block mx-auto' />
-          </NavbarBrand> */}
-          <Nav
-            className='py-3 align-items-center justify-content-end'
-            style={{ width: '30vw' }}
-          >
-            {isLoggedIn && (
-              <>
-               <NavItem
-                className='py-3 d-none d-sm-flex align-items-center user-info'
-                style={{ backgroundColor: 'transparent' }}
-              >
-                <div className='user-avatar'>
-                  <Logo className='rounded-circle' width={40} height={40} />
-                </div>
-                <p className='transparent-background'>{'Victor Ponta'}</p>
-              </NavItem>
-                <NavItem className='ml-2'>
-                  <p className='navItem-link d-flex align-items-center token-amount'>
-                    <EccuLogo width={20} height={20} className={'mr-2'} /> $
-                    {eccuBalance}
-                  </p>
-                </NavItem>
-                <NavItem className='ml-2'>
-                  <p className='navItem-link d-flex align-items-center token-amount'>
-                    <img
-                      src='https://media.elrond.com/tokens/asset/ESTAR-461bab/logo.svg'
-                      width={20}
-                      height={20}
-                      className={'mr-2'}
-                    />{' '}
-                    ${estarBalance > 0 ? String(estarBalance).slice(0, -18) : 0}
-                  </p>
-                </NavItem>
-                <NavItem className='ml-2'>
-                  <p className='navItem-link custom-btn' onClick={handleLogout}>
-                    Logout
-                  </p>
-                </NavItem>
+                  {isHovered ? (
+                    <div>
+                      <Vector className="mining-vector" />
+                      <div className="group-10">
+                      <Logomining className="logomining" />
+                      <p className="miningtext">Mining</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <NormalBtn className="mining-vector" />
+                      <div className="group-10">
+                      <LogoMiningWhite className="logomining" />
+                      <p className="miningtext-hov">Mining</p>
+                      </div>
+                    </div>
+                  )}
+                </a>
+
+                <a
+                    href="#"
+                    className="button-mining2"
+                    onMouseEnter={() => setIsHovered2(true)}
+                    onMouseLeave={() => setIsHovered2(false)}
+                  >
+                    {isHovered2 ? (
+                      <div>
+                        <Vector className="mining-vector" />
+                        <div className="">
+                          <Logoshop className="logoshop" />
+                          <p className="shoptext-hov">Shop</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <NormalBtn className="mining-vector" />
+                        <div className="">
+                          <LogoshopBlack className="logoshop" />
+                          <p className="shoptext">Shop</p>
+                        </div>
+                      </div>
+                    )}
+                  </a>
+
+                  <a
+                    href="#"
+                    className="button-mining3"
+                    onMouseEnter={() => setIsHovered3(true)}
+                    onMouseLeave={() => setIsHovered3(false)}
+                  >
+                    {isHovered3 ? (
+                      <div>
+                        <Vector className="mining-vector" />
+                        <div className="">
+                          <LogoLeaderboardBlack className="logoshop" />
+                          <p className="leaderboardtext-hov">Leaderboard</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <NormalBtn className="mining-vector" />
+                        <div className="">
+                          <LogoLeaderboard className="logoshop" />
+                          <p className="leaderboardtext">Leaderboard</p>
+                        </div>
+                      </div>
+                    )}
+                  </a>
+
+                  <a
+                    href="#"
+                    className="button-mining4"
+                    onMouseEnter={() => setIsHovered4(true)}
+                    onMouseLeave={() => setIsHovered4(false)}
+                  >
+                    {isHovered4 ? (
+                      <div>
+                        <Vector className="mining-vector" />
+                        <div className="">
+                          <LogoWallet className="logoshop" />
+                          <p className="walletText-hov">My Wallet</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <NormalBtn className="mining-vector" />
+                        <div className="">
+                          <LogoWalletWhite className="logoshop" />
+                          <p className="walletText">My Wallet</p>
+                        </div>
+                      </div>
+                    )}
+                  </a>
+                  <div className='profile'>
+                  <Pozik className='pozik'/>
+                  <p className='textprofile'>Constantin Dinamo</p>
+                  <Logoutbtn className='logoutbtn'>
+                    <p className='textlogout'>Log out</p>
+                  </Logoutbtn>
+                  </div>
+              </div>
+              <div className="banner"></div> 
+              
               </>
             )}
             {!isLoggedIn && (
@@ -99,12 +174,7 @@ export const Navbar = observer(() => {
               </NavItem>
             )}
           </Nav>
-        </div>
       </BsNavbar>
-      <Container>
-        <SubMenu />
-        <ResourcesMenu />
-      </Container>
     </>
   );
 });

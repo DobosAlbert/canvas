@@ -1,81 +1,26 @@
 import { useEffect, useState } from 'react';
-import { Nav, NavItem } from 'react-bootstrap';
-import {
-  faBuilding,
-  faCartShopping,
-  faWallet
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { routeNames } from 'routes';
-import { Link, useLocation } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/hooks';
+import { ReactComponent as SubMenuBtn } from '../../../assets/img/ButtonSubMenu.svg';
+import { ReactComponent as Logomining } from '../../../assets/img/miningSubMenu.svg';
 import './SubMenu.css';
 
-const subNavItems = [
-  {
-    name: 'Mining',
-    label: 'castle',
-    link: routeNames.myCastle,
-    icon: <FontAwesomeIcon icon={faBuilding} />
-  },
-  {
-    name: 'Shop',
-    label: 'shop',
-    link: routeNames.shop,
-    icon: <FontAwesomeIcon icon={faCartShopping} />
-  },
-  {
-    name: 'My Wallet',
-    label: 'wallet',
-    link: routeNames.myWallet,
-    icon: <FontAwesomeIcon icon={faWallet} />
-  }
-];
-
 export const SubMenu = () => {
-  const [activeItem, setActiveItem] = useState<string>(subNavItems[0].label);
   const isLoggedIn = useGetIsLoggedIn();
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    if (pathname.length > 10) {
-      setActiveItem(pathname.slice(11));
-    } else {
-      setActiveItem(subNavItems[0].label);
-    }
-  }, [pathname]);
 
   if (!isLoggedIn) return null;
 
   return (
-    <Nav className='d-block mx-auto d-sm-flex mx-sm-0 justify-content-center align-items-center mt-4'>
-      {subNavItems.map((subNavItem) => (
-        <NavItem key={subNavItem.name} className={'mb-3 mb-sm-0'}>
-          {subNavItem.label !== 'secondary-market' ? (
-            <Link
-              className={`subNavItem-link ${
-                activeItem === subNavItem.label
-                  ? 'active-subNavItem'
-                  : undefined
-              } button`}
-              to={subNavItem.link}
-              onClick={() => setActiveItem(subNavItem.label)}
-            >
-              {subNavItem.icon}
-              <span className='ml-3'>{subNavItem.name}</span>
-            </Link>
-          ) : (
-            <a
-              href={subNavItem.link}
-              target='_blank'
-              className='subNavItem-link'
-            >
-              {subNavItem.icon}
-              <span className='ml-3'>{subNavItem.name}</span>
-            </a>
-          )}
-        </NavItem>
-      ))}
+    <Nav>
+      <div className="header-item">
+         <div className='button-mining'>
+             <SubMenuBtn className='mining-vector' />
+                <div className='group-10'>
+                <Logomining className='logomining' />
+                 <p className='miningtext'>Mining</p>
+            </div>
+          </div>
+       </div>
     </Nav>
   );
 };

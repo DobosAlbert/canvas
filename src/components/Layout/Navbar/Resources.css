@@ -1,0 +1,16 @@
+.custom-btn-res {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px; /* înălțimea dorită pentru butoane */
+    margin: 5px; /* spațiere între butoane */
+  }
+  
+  .custom-btn-res:first-child {
+    width: 267px; /* lățimea dorită pentru primul buton */
+  }
+  
+  .custom-btn-res:last-child {
+    width: 267px; /* lățimea dorită pentru ultimul buton */
+  }
+  

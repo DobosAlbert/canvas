@@ -1,10 +1,15 @@
 import { PageLayout } from 'components/PageLayout';
-import { SwapPage } from './components/SwapPage';
+import { Col, Row } from 'react-bootstrap';
+import PixiComponent from '../NewPixi';
+
 
 export const Dashboard = () => {
   return (
     <PageLayout>
-      <SwapPage />
+       <Row className=''>
+            <PixiComponent>
+           </PixiComponent>  
+      </Row> 
     </PageLayout>
   );
 };

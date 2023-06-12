@@ -6,22 +6,22 @@ import { observer } from 'mobx-react-lite';
 export const MyCastle = observer(() => {
   return (
     <PageLayout>
-      {/* <Row className='mb-3'>
+       <Row className='mb-3'>
         <Col>
           <h1 className='text-center'>Mining</h1>
         </Col>
-      </Row> */}
-      {/* <Row className='mb-3'>
-        <Col xs={12}> */}
+      </Row> 
+       <Row className='mb-3'>
+        <Col xs={12}> 
            <PixiComponent>
-            </PixiComponent>
-        {/* </Col>
-      </Row> */}
-      {/* <Row>
-        <Col xs={12}>
-          <DisplaySfts />
+           </PixiComponent> 
         </Col>
-      </Row> */}
+      </Row> 
+     <Row>
+        <Col xs={12}>
+          {/* <DisplaySfts /> */}
+        </Col>
+      </Row> 
     </PageLayout>
   );
 });

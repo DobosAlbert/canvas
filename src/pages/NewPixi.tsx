@@ -18,7 +18,7 @@ const PixiComponent: React.FC<Props> = ({children}) => {
     const [showModal2, setShowModal2] = useState(false); // State pentru a controla afișarea celui de-al doilea modal
 
     const app = new PIXI.Application({
-        width: window.innerWidth * 0.4,
+        width: window.innerWidth * 0.3,
         height: window.innerHeight * 0.75,
         backgroundColor: 0xFFFFFF,
         antialias: true
@@ -96,7 +96,7 @@ const PixiComponent: React.FC<Props> = ({children}) => {
 
     const resize = () => {
 
-        app.renderer.resize(window.innerWidth * 0.65, window.innerHeight * 0.75); // Ajustează dimensiunile renderer-ului la dimensiunile ferestrei
+        app.renderer.resize(window.innerWidth * 0.66, window.innerHeight * 0.75); // Ajustează dimensiunile renderer-ului la dimensiunile ferestrei
 
         if (backgroundSprite.current) {
             backgroundSprite.current.width = window.innerWidth * 0.66;
@@ -106,7 +106,7 @@ const PixiComponent: React.FC<Props> = ({children}) => {
     
         const sizes = [20, 9, 9.09, 6, 6, 9, 20, 3];
         const heights = [3, 3, 3.22, 4, 2.5, 8, 7, 2];
-        const widths = [12, 14, 1.8, 4.3, 2.1, 2.2, 3, 2.7];
+        const widths = [12, 14, 2.1, 4.3, 2.1, 4, 11, 4];
         const positions = [2.3, 2, 2, 4, 60, 1.3, 50, 100000];
     
         for (let i = 0; i < sprites.current.length; i++) {
@@ -121,15 +121,14 @@ const PixiComponent: React.FC<Props> = ({children}) => {
 
     return (
         <div style={{
-            position: 'relative',
-            height: '100%',
-            width: '100%',
-            backgroundColor: 'yourBackgroundColorHere' // background color of your choice
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh'
         }}>
-            <div ref={gameCanvas}>
+            <div ref={gameCanvas} style={{marginTop: '18%', marginLeft: '15%', marginRight: '15%', width: '100%'}}>
                 {children}
             </div>
-
             {/* Primul modal */}
             {showModal1 && (
                 <div style={{
